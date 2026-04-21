@@ -4,59 +4,48 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>More Than School Supplies</title>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    background: #f5f0eb;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 24px 16px;
-    font-family: 'DM Sans', sans-serif;
+    background: #ffffff;
+    display: block;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    color: rgb(45, 46, 49);
   }
 
-  .section {
-    max-width: 760px;
-    width: 100%;
-  }
+  .section { width: 100%; }
 
-  /* Search Widget */
+  /* ── SEARCH ── */
   .search-section {
-    margin-bottom: 28px;
+    margin-bottom: 20px;
     opacity: 0;
-    animation: fadeUp 0.7s ease forwards;
+    animation: fadeUp 0.6s ease forwards;
   }
 
-  .search-intro {
-    text-align: center;
-    margin-bottom: 12px;
-  }
+  .search-intro { text-align: center; margin-bottom: 10px; }
 
   .search-intro h2 {
-    font-family: 'Fraunces', serif;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 700;
-    color: #1a1a1a;
-    margin-bottom: 4px;
+    color: rgb(45, 46, 49);
+    margin-bottom: 3px;
   }
 
   .search-intro p {
     font-size: 13px;
-    color: #666;
-    max-width: 420px;
-    margin: 0 auto;
+    color: rgb(106, 101, 98);
     line-height: 1.5;
   }
 
   .search-wrapper {
     background: #fff;
-    border-radius: 14px;
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
-    transition: box-shadow 0.3s ease;
+    box-shadow: 0 2px 4px 0 rgb(25 29 34 / 10%);
+    border: 1px solid rgb(0 0 0 / 12%);
     line-height: 0;
     font-size: 0;
   }
@@ -73,140 +62,130 @@
     height: var(--iframe-height, 360px);
   }
 
-  /* Header */
+  /* ── LABEL ── */
   .header {
     display: flex;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 16px;
+    gap: 10px;
+    margin-bottom: 14px;
     opacity: 0;
-    animation: fadeUp 0.7s ease forwards;
+    animation: fadeUp 0.6s ease 0.1s forwards;
   }
 
-  .header-line {
-    height: 1.5px;
-    background: #1a7fa8;
-    flex: 1;
-  }
+  .header-line { height: 1px; background: rgb(0, 151, 197); flex: 1; }
 
   .header-label {
-    font-family: 'DM Sans', sans-serif;
     font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.16em;
+    font-weight: 600;
+    letter-spacing: 0.13em;
     text-transform: uppercase;
-    color: #1a7fa8;
+    color: rgb(0, 151, 197);
     white-space: nowrap;
   }
 
-  /* Main card */
+  /* ── CARD ── */
   .card {
     background: #fff;
-    border-radius: 14px;
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    box-shadow: 0 2px 4px 0 rgb(25 29 34 / 10%);
+    border: 1px solid rgb(0 0 0 / 12%);
     opacity: 0;
-    animation: fadeUp 0.7s ease 0.15s forwards;
+    animation: fadeUp 0.6s ease 0.2s forwards;
   }
 
   .card-top {
-    padding: 28px 32px 24px;
-    border-bottom: 1px solid #f0ebe4;
+    padding: 22px 24px 18px;
+    border-bottom: 1px solid rgb(230, 229, 229);
   }
 
   .headline {
-    font-family: 'Fraunces', serif;
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 700;
-    color: #1a1a1a;
-    line-height: 1.2;
-    margin-bottom: 12px;
+    color: rgb(45, 46, 49);
+    line-height: 1.25;
+    margin-bottom: 10px;
   }
 
-  .headline em {
-    font-style: italic;
-    color: #1a7fa8;
-  }
+  .headline em { font-style: italic; color: rgb(0, 151, 197); }
 
   .body-text {
     font-size: 14px;
-    line-height: 1.65;
-    color: #555;
+    line-height: 1.6;
+    color: rgb(80, 76, 73);
+    font-weight: 400;
   }
 
-  /* Stats */
+  /* ── STATS ── */
   .stats-row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    border-top: 1px solid #f0ebe4;
   }
 
   .stat {
-    padding: 18px 24px;
-    border-right: 1px solid #f0ebe4;
+    padding: 14px 18px;
+    border-right: 1px solid rgb(230, 229, 229);
     opacity: 0;
-    animation: fadeUp 0.6s ease forwards;
+    animation: fadeUp 0.5s ease forwards;
   }
 
   .stat:nth-child(1) { animation-delay: 0.3s; }
-  .stat:nth-child(2) { animation-delay: 0.42s; }
-  .stat:nth-child(3) { animation-delay: 0.54s; border-right: none; }
+  .stat:nth-child(2) { animation-delay: 0.4s; }
+  .stat:nth-child(3) { animation-delay: 0.5s; border-right: none; }
 
   .stat-number {
-    font-family: 'Fraunces', serif;
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 700;
-    color: #1a7fa8;
+    color: rgb(0, 151, 197);
     line-height: 1;
-    margin-bottom: 4px;
+    margin-bottom: 3px;
   }
 
   .stat-label {
-    font-size: 11px;
-    color: #999;
+    font-size: 10px;
+    color: rgb(106, 101, 98);
     line-height: 1.35;
     font-weight: 400;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
   }
 
-  /* Quote */
+  /* ── QUOTE ── */
   .quote-block {
-    background: #1a7fa8;
-    padding: 24px 32px;
+    background: rgb(0, 151, 197);
+    padding: 18px 24px;
     position: relative;
     overflow: hidden;
     opacity: 0;
-    animation: fadeUp 0.7s ease 0.65s forwards;
+    animation: fadeUp 0.6s ease 0.55s forwards;
   }
 
   .quote-block::before {
     content: '\201C';
-    font-family: 'Fraunces', serif;
-    font-size: 100px;
-    color: rgba(255,255,255,0.1);
+    font-size: 80px;
+    color: rgba(255,255,255,0.12);
     position: absolute;
-    top: -10px;
-    left: 24px;
+    top: -6px;
+    left: 16px;
     line-height: 1;
     pointer-events: none;
   }
 
   .quote-text {
-    font-family: 'Fraunces', serif;
-    font-size: 15px;
+    font-size: 13px;
     font-style: italic;
     color: #fff;
-    line-height: 1.6;
+    line-height: 1.65;
     position: relative;
     z-index: 1;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
+    font-weight: 400;
   }
 
   .quote-attribution {
-    font-size: 11px;
-    font-weight: 500;
-    color: rgba(255,255,255,0.65);
+    font-size: 10px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.75);
     letter-spacing: 0.08em;
     text-transform: uppercase;
     position: relative;
@@ -214,53 +193,18 @@
   }
 
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(12px); }
+    from { opacity: 0; transform: translateY(8px); }
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  /* ── TABLET (max 680px) ── */
-  @media (max-width: 680px) {
-    body { padding: 16px 12px; }
-
-    .search-intro h2 { font-size: 17px; }
-    .search-intro p  { font-size: 12px; }
-    .search-section  { margin-bottom: 20px; }
-
-    .header-label { font-size: 9px; letter-spacing: 0.12em; }
-
-    .card-top { padding: 20px 20px 16px; }
-    .headline { font-size: 19px; margin-bottom: 10px; }
-    .body-text { font-size: 13px; line-height: 1.6; }
-
-    .stat-number { font-size: 24px; }
-    .stat-label  { font-size: 10px; }
-    .stat        { padding: 14px 18px; }
-
-    .quote-block { padding: 20px 20px; }
-    .quote-text  { font-size: 13px; line-height: 1.55; }
-    .quote-attribution { font-size: 10px; }
-    .quote-block::before { font-size: 70px; }
-  }
-
-  /* ── MOBILE (max 420px) ── */
-  @media (max-width: 420px) {
-    body { padding: 12px 10px; }
-
-    .search-intro { margin-bottom: 8px; }
-    .search-intro h2 { font-size: 15px; }
-    .search-intro p  { font-size: 11px; }
-
-    /* Stats stack vertically on small phones */
+  @media (max-width: 520px) {
+    .card-top { padding: 16px 16px 14px; }
     .stats-row { grid-template-columns: 1fr 1fr; }
-    .stat:nth-child(1) { border-bottom: 1px solid #f0ebe4; }
-    .stat:nth-child(2) { border-bottom: 1px solid #f0ebe4; border-right: none; }
-    .stat:nth-child(3) { border-right: none; grid-column: 1 / -1; border-bottom: none; }
-
-    .headline { font-size: 17px; }
-    /* Remove line break on tiny screens so text flows naturally */
+    .stat:nth-child(1) { border-bottom: 1px solid rgb(230,229,229); }
+    .stat:nth-child(2) { border-bottom: 1px solid rgb(230,229,229); border-right: none; }
+    .stat:nth-child(3) { border-right: none; grid-column: 1 / -1; }
     .headline br { display: none; }
-
-    .quote-text { font-size: 12px; }
+    .quote-block { padding: 14px 16px; }
   }
 </style>
 </head>
@@ -274,9 +218,9 @@
       <p>Search for your local school to see how many students we're reaching — then make your gift count.</p>
     </div>
     <div class="search-wrapper">
-      <iframe 
-        src="https://briannafgt.github.io/school-search" 
-        width="100%" 
+      <iframe
+        src="https://briannafgt.github.io/school-search"
+        width="100%"
         scrolling="no"
         title="Find your school">
       </iframe>
@@ -320,29 +264,8 @@
 </section>
 
 <script>
-  // ── 1. Auto-resize the inner school-search iframe ──
   const searchWrapper = document.querySelector('.search-wrapper');
   const searchIframe  = document.querySelector('.search-wrapper iframe');
-
-  window.addEventListener('message', function(e) {
-    if (e.origin !== 'https://briannafgt.github.io') return;
-
-    if (e.data && e.data.height) {
-      const newHeight = e.data.height;
-      if (newHeight <= 100) {
-        searchWrapper.classList.remove('expanded');
-        searchIframe.style.height = newHeight + 'px';
-      } else {
-        searchWrapper.style.setProperty('--iframe-height', newHeight + 'px');
-        searchWrapper.classList.add('expanded');
-        searchIframe.style.height = newHeight + 'px';
-      }
-      // Report our new total height to Classy ONCE after search result appears
-      setTimeout(reportHeight, 600);
-    }
-  });
-
-  // ── 2. Report this page's total height to the Classy parent ──
   let lastReportedHeight = 0;
 
   function reportHeight() {
@@ -353,9 +276,23 @@
     }
   }
 
-  // Report once on load
+  window.addEventListener('message', function(e) {
+    if (e.origin !== 'https://briannafgt.github.io') return;
+    if (e.data && e.data.height) {
+      const newHeight = e.data.height;
+      if (newHeight <= 100) {
+        searchWrapper.classList.remove('expanded');
+        searchIframe.style.height = newHeight + 'px';
+      } else {
+        searchWrapper.style.setProperty('--iframe-height', newHeight + 'px');
+        searchWrapper.classList.add('expanded');
+        searchIframe.style.height = newHeight + 'px';
+      }
+      setTimeout(reportHeight, 600);
+    }
+  });
+
   window.addEventListener('load', reportHeight);
-  // Report after fonts load (can shift layout)
   document.fonts.ready.then(reportHeight);
 </script>
 
