@@ -304,18 +304,26 @@
   });
 
   // ── 2. Report this page's total height to the Classy parent ──
+  let lastReportedHeight = 0;
+
   function reportHeight() {
     const height = document.body.scrollHeight;
-    window.parent.postMessage({ height: height }, '*');
+    if (height !== lastReportedHeight) {
+      lastReportedHeight = height;
+      window.parent.postMessage({ height: height }, '*');
+    }
   }
 
-  // Report on load and whenever anything changes
   window.addEventListener('load', reportHeight);
   window.addEventListener('resize', reportHeight);
 
-  // Also use ResizeObserver for dynamic content changes
   if (window.ResizeObserver) {
-    new ResizeObserver(reportHeight).observe(document.body);
+    let resizeTimer;
+    new ResizeObserver(function() {
+      // Debounce to prevent rapid-fire triggers
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(reportHeight, 100);
+    }).observe(document.body);
   }
 </script>
 
