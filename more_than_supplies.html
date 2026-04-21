@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>More Than School Supplies</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #f5f0eb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 24px 16px;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .section {
+    max-width: 760px;
+    width: 100%;
+  }
+
+  /* Search Widget */
+  .search-section {
+    margin-bottom: 28px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards;
+  }
+
+  .search-intro {
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  .search-intro h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+  }
+
+  .search-intro p {
+    font-size: 13px;
+    color: #666;
+    max-width: 420px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  .search-wrapper {
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    transition: box-shadow 0.3s ease;
+  }
+
+  .search-wrapper iframe {
+    display: block;
+    width: 100%;
+    border: none;
+    height: 80px;
+    transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .search-wrapper.expanded iframe {
+    height: var(--iframe-height, 360px);
+  }
+
+  /* Header */
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards;
+  }
+
+  .header-line {
+    height: 1.5px;
+    background: #1a7fa8;
+    flex: 1;
+  }
+
+  .header-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #1a7fa8;
+    white-space: nowrap;
+  }
+
+  /* Main card */
+  .card {
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.15s forwards;
+  }
+
+  .card-top {
+    padding: 28px 32px 24px;
+    border-bottom: 1px solid #f0ebe4;
+  }
+
+  .headline {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+
+  .headline em {
+    font-style: italic;
+    color: #1a7fa8;
+  }
+
+  .body-text {
+    font-size: 14px;
+    line-height: 1.65;
+    color: #555;
+  }
+
+  /* Stats */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid #f0ebe4;
+  }
+
+  .stat {
+    padding: 18px 24px;
+    border-right: 1px solid #f0ebe4;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  .stat:nth-child(1) { animation-delay: 0.3s; }
+  .stat:nth-child(2) { animation-delay: 0.42s; }
+  .stat:nth-child(3) { animation-delay: 0.54s; border-right: none; }
+
+  .stat-number {
+    font-family: 'Fraunces', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #1a7fa8;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: #999;
+    line-height: 1.35;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Quote */
+  .quote-block {
+    background: #1a7fa8;
+    padding: 24px 32px;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.65s forwards;
+  }
+
+  .quote-block::before {
+    content: '\201C';
+    font-family: 'Fraunces', serif;
+    font-size: 100px;
+    color: rgba(255,255,255,0.1);
+    position: absolute;
+    top: -10px;
+    left: 24px;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .quote-text {
+    font-family: 'Fraunces', serif;
+    font-size: 15px;
+    font-style: italic;
+    color: #fff;
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 10px;
+  }
+
+  .quote-attribution {
+    font-size: 11px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 520px) {
+    .card-top { padding: 20px 18px; }
+    .stats-row { grid-template-columns: 1fr; }
+    .stat { border-right: none; border-bottom: 1px solid #f0ebe4; padding: 16px 18px; }
+    .stat:last-child { border-bottom: none; }
+    .quote-block { padding: 20px 18px; }
+  }
+</style>
+</head>
+<body>
+<section class="section">
+
+  <!-- SEARCH WIDGET -->
+  <div class="search-section">
+    <div class="search-intro">
+      <h2>Is your school on our list?</h2>
+      <p>Search for your local school to see how many students we're reaching — then make your gift count.</p>
+    </div>
+    <div class="search-wrapper">
+      <iframe 
+        src="https://briannafgt.github.io/school-search" 
+        width="100%" 
+        scrolling="no"
+        title="Find your school">
+      </iframe>
+    </div>
+  </div>
+
+  <!-- MORE THAN SCHOOL SUPPLIES -->
+  <div class="header">
+    <div class="header-line"></div>
+    <span class="header-label">More Than School Supplies</span>
+    <div class="header-line"></div>
+  </div>
+
+  <div class="card">
+    <div class="card-top">
+      <h2 class="headline">A backpack is more than<br><em>a backpack.</em></h2>
+      <p class="body-text">It's a family with one less thing to worry about. It's a child who walks through the door feeling ready, confident, and just like everyone else. For over 30 years, Family Giving Tree has been making that moment possible for Bay Area kids — and your gift keeps it going.</p>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-number">500,000+</div>
+        <div class="stat-label">Students prepared<br>over 30 years</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">35,000</div>
+        <div class="stat-label">Students served<br>last year</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">125</div>
+        <div class="stat-label">Partner schools<br>across the Bay Area</div>
+      </div>
+    </div>
+
+    <div class="quote-block">
+      <p class="quote-text">The smile on the faces of the family and the relief you see in them, knowing they don't have to spend the money that they have assigned for food. This always makes my heart jump with happiness.</p>
+      <p class="quote-attribution">— A Bay Area Educator</p>
+    </div>
+  </div>
+
+</section>
+
+<script>
+  // ── 1. Auto-resize the inner school-search iframe ──
+  const searchWrapper = document.querySelector('.search-wrapper');
+  const searchIframe  = document.querySelector('.search-wrapper iframe');
+
+  window.addEventListener('message', function(e) {
+    if (e.origin !== 'https://briannafgt.github.io') return;
+
+    if (e.data && e.data.height) {
+      const newHeight = e.data.height;
+      if (newHeight <= 100) {
+        searchWrapper.classList.remove('expanded');
+        searchIframe.style.height = newHeight + 'px';
+      } else {
+        searchWrapper.style.setProperty('--iframe-height', newHeight + 'px');
+        searchWrapper.classList.add('expanded');
+        searchIframe.style.height = newHeight + 'px';
+      }
+      // After inner iframe resizes, report OUR total height to Classy
+      reportHeight();
+    }
+  });
+
+  // ── 2. Report this page's total height to the Classy parent ──
+  function reportHeight() {
+    const height = document.body.scrollHeight;
+    window.parent.postMessage({ height: height }, '*');
+  }
+
+  // Report on load and whenever anything changes
+  window.addEventListener('load', reportHeight);
+  window.addEventListener('resize', reportHeight);
+
+  // Also use ResizeObserver for dynamic content changes
+  if (window.ResizeObserver) {
+    new ResizeObserver(reportHeight).observe(document.body);
+  }
+</script>
+
+</body>
+</html>
