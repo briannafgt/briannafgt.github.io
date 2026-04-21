@@ -57,6 +57,8 @@
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0,0,0,0.07);
     transition: box-shadow 0.3s ease;
+    line-height: 0;
+    font-size: 0;
   }
 
   .search-wrapper iframe {
@@ -216,12 +218,49 @@
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  @media (max-width: 520px) {
-    .card-top { padding: 20px 18px; }
-    .stats-row { grid-template-columns: 1fr; }
-    .stat { border-right: none; border-bottom: 1px solid #f0ebe4; padding: 16px 18px; }
-    .stat:last-child { border-bottom: none; }
-    .quote-block { padding: 20px 18px; }
+  /* ── TABLET (max 680px) ── */
+  @media (max-width: 680px) {
+    body { padding: 16px 12px; }
+
+    .search-intro h2 { font-size: 17px; }
+    .search-intro p  { font-size: 12px; }
+    .search-section  { margin-bottom: 20px; }
+
+    .header-label { font-size: 9px; letter-spacing: 0.12em; }
+
+    .card-top { padding: 20px 20px 16px; }
+    .headline { font-size: 19px; margin-bottom: 10px; }
+    .body-text { font-size: 13px; line-height: 1.6; }
+
+    .stat-number { font-size: 24px; }
+    .stat-label  { font-size: 10px; }
+    .stat        { padding: 14px 18px; }
+
+    .quote-block { padding: 20px 20px; }
+    .quote-text  { font-size: 13px; line-height: 1.55; }
+    .quote-attribution { font-size: 10px; }
+    .quote-block::before { font-size: 70px; }
+  }
+
+  /* ── MOBILE (max 420px) ── */
+  @media (max-width: 420px) {
+    body { padding: 12px 10px; }
+
+    .search-intro { margin-bottom: 8px; }
+    .search-intro h2 { font-size: 15px; }
+    .search-intro p  { font-size: 11px; }
+
+    /* Stats stack vertically on small phones */
+    .stats-row { grid-template-columns: 1fr 1fr; }
+    .stat:nth-child(1) { border-bottom: 1px solid #f0ebe4; }
+    .stat:nth-child(2) { border-bottom: 1px solid #f0ebe4; border-right: none; }
+    .stat:nth-child(3) { border-right: none; grid-column: 1 / -1; border-bottom: none; }
+
+    .headline { font-size: 17px; }
+    /* Remove line break on tiny screens so text flows naturally */
+    .headline br { display: none; }
+
+    .quote-text { font-size: 12px; }
   }
 </style>
 </head>
