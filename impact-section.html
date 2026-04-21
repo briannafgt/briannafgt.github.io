@@ -298,8 +298,8 @@
         searchWrapper.classList.add('expanded');
         searchIframe.style.height = newHeight + 'px';
       }
-      // After inner iframe resizes, report OUR total height to Classy
-      reportHeight();
+      // Report our new total height to Classy ONCE after search result appears
+      setTimeout(reportHeight, 600);
     }
   });
 
@@ -314,17 +314,10 @@
     }
   }
 
+  // Report once on load
   window.addEventListener('load', reportHeight);
-  window.addEventListener('resize', reportHeight);
-
-  if (window.ResizeObserver) {
-    let resizeTimer;
-    new ResizeObserver(function() {
-      // Debounce to prevent rapid-fire triggers
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(reportHeight, 100);
-    }).observe(document.body);
-  }
+  // Report after fonts load (can shift layout)
+  document.fonts.ready.then(reportHeight);
 </script>
 
 </body>
