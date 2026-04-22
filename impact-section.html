@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+ 
   body {
     background: #ffffff;
     display: block;
@@ -15,74 +15,9 @@
     font-family: 'Poppins', sans-serif;
     color: rgb(45, 46, 49);
   }
-
+ 
   .section { width: 100%; }
-
-  /* ── SEARCH ── */
-  .search-section {
-    margin-bottom: 20px;
-    opacity: 0;
-    animation: fadeUp 0.6s ease forwards;
-  }
-
-  .search-intro { text-align: center; margin-bottom: 10px; }
-
-  .search-intro h2 {
-    font-size: 16px;
-    font-weight: 700;
-    color: rgb(45, 46, 49);
-    margin-bottom: 3px;
-  }
-
-  .search-intro p {
-    font-size: 13px;
-    color: rgb(106, 101, 98);
-    line-height: 1.5;
-  }
-
-  .search-wrapper {
-    background: #fff;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 4px 0 rgb(25 29 34 / 10%);
-    border: 1px solid rgb(0 0 0 / 12%);
-    line-height: 0;
-    font-size: 0;
-  }
-
-  .search-wrapper iframe {
-    display: block;
-    width: 100%;
-    border: none;
-    height: 60px;
-    transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .search-wrapper.expanded iframe {
-    height: var(--iframe-height, 360px);
-  }
-
-  /* ── LABEL ── */
-  .header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 14px;
-    opacity: 0;
-    animation: fadeUp 0.6s ease 0.1s forwards;
-  }
-
-  .header-line { height: 1px; background: rgb(0, 151, 197); flex: 1; }
-
-  .header-label {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.13em;
-    text-transform: uppercase;
-    color: rgb(0, 151, 197);
-    white-space: nowrap;
-  }
-
+ 
   /* ── CARD ── */
   .card {
     background: #fff;
@@ -91,48 +26,59 @@
     box-shadow: 0 2px 4px 0 rgb(25 29 34 / 10%);
     border: 1px solid rgb(0 0 0 / 12%);
     opacity: 0;
-    animation: fadeUp 0.6s ease 0.2s forwards;
+    animation: fadeUp 0.6s ease forwards;
   }
-
-  .card-top {
-    padding: 22px 24px 18px;
-    border-bottom: 1px solid rgb(230, 229, 229);
+ 
+  /* ── TEAL HEADER ── */
+  .card-header {
+    background: rgb(0, 151, 197);
+    padding: 16px 20px;
   }
-
-  .headline {
+ 
+  .card-header h2 {
     font-size: 18px;
     font-weight: 700;
-    color: rgb(45, 46, 49);
-    line-height: 1.25;
-    margin-bottom: 10px;
+    color: #fff;
+    margin: 0 0 2px;
+    line-height: 1.2;
   }
-
-  .headline em { font-style: italic; color: rgb(0, 151, 197); }
-
+ 
+  .card-header p {
+    font-size: 11px;
+    color: rgba(255,255,255,0.8);
+    margin: 0;
+  }
+ 
+  /* ── BODY ── */
+  .card-body {
+    padding: 18px 20px 14px;
+    border-bottom: 1px solid rgb(230, 229, 229);
+  }
+ 
   .body-text {
-    font-size: 14px;
-    line-height: 1.6;
+    font-size: 13px;
+    line-height: 1.65;
     color: rgb(80, 76, 73);
     font-weight: 400;
   }
-
+ 
   /* ── STATS ── */
   .stats-row {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
   }
-
+ 
   .stat {
     padding: 14px 18px;
     border-right: 1px solid rgb(230, 229, 229);
     opacity: 0;
     animation: fadeUp 0.5s ease forwards;
   }
-
-  .stat:nth-child(1) { animation-delay: 0.3s; }
-  .stat:nth-child(2) { animation-delay: 0.4s; }
-  .stat:nth-child(3) { animation-delay: 0.5s; border-right: none; }
-
+ 
+  .stat:nth-child(1) { animation-delay: 0.2s; }
+  .stat:nth-child(2) { animation-delay: 0.3s; }
+  .stat:nth-child(3) { animation-delay: 0.4s; border-right: none; }
+ 
   .stat-number {
     font-size: 24px;
     font-weight: 700;
@@ -140,7 +86,7 @@
     line-height: 1;
     margin-bottom: 3px;
   }
-
+ 
   .stat-label {
     font-size: 10px;
     color: rgb(106, 101, 98);
@@ -149,17 +95,17 @@
     text-transform: uppercase;
     letter-spacing: 0.04em;
   }
-
+ 
   /* ── QUOTE ── */
   .quote-block {
     background: rgb(0, 151, 197);
-    padding: 18px 24px;
+    padding: 18px 20px;
     position: relative;
     overflow: hidden;
     opacity: 0;
-    animation: fadeUp 0.6s ease 0.55s forwards;
+    animation: fadeUp 0.6s ease 0.45s forwards;
   }
-
+ 
   .quote-block::before {
     content: '\201C';
     font-size: 80px;
@@ -170,7 +116,7 @@
     line-height: 1;
     pointer-events: none;
   }
-
+ 
   .quote-text {
     font-size: 13px;
     font-style: italic;
@@ -181,7 +127,7 @@
     margin-bottom: 8px;
     font-weight: 400;
   }
-
+ 
   .quote-attribution {
     font-size: 10px;
     font-weight: 600;
@@ -191,55 +137,36 @@
     position: relative;
     z-index: 1;
   }
-
+ 
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(8px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-
+ 
   @media (max-width: 520px) {
-    .card-top { padding: 16px 16px 14px; }
+    .card-body { padding: 14px 14px 12px; }
     .stats-row { grid-template-columns: 1fr 1fr; }
     .stat:nth-child(1) { border-bottom: 1px solid rgb(230,229,229); }
     .stat:nth-child(2) { border-bottom: 1px solid rgb(230,229,229); border-right: none; }
     .stat:nth-child(3) { border-right: none; grid-column: 1 / -1; }
-    .headline br { display: none; }
     .quote-block { padding: 14px 16px; }
   }
 </style>
 </head>
 <body>
 <section class="section">
-
-  <!-- SEARCH WIDGET -->
-  <div class="search-section">
-    <div class="search-intro">
-      <h2>Is your school on our list?</h2>
-      <p>Search for your local school to see how many students we're reaching — then make your gift count.</p>
-    </div>
-    <div class="search-wrapper">
-      <iframe
-        src="https://briannafgt.github.io/school-search"
-        width="100%"
-        scrolling="no"
-        title="Find your school">
-      </iframe>
-    </div>
-  </div>
-
-  <!-- MORE THAN SCHOOL SUPPLIES -->
-  <div class="header">
-    <div class="header-line"></div>
-    <span class="header-label">More Than School Supplies</span>
-    <div class="header-line"></div>
-  </div>
-
+ 
   <div class="card">
-    <div class="card-top">
-      <h2 class="headline">A backpack is more than<br><em>a backpack.</em></h2>
-      <p class="body-text">It's a family with one less thing to worry about. It's a child who walks through the door feeling ready, confident, and just like everyone else. For over 30 years, Family Giving Tree has been making that moment possible for Bay Area kids — and your gift keeps it going.</p>
+ 
+    <div class="card-header">
+      <h2>More Than School Supplies</h2>
+      <p>Every backpack is a family with one less thing to worry about</p>
     </div>
-
+ 
+    <div class="card-body">
+      <p class="body-text">It's a child who walks through the door feeling ready, confident, and just like everyone else. For over 30 years, Family Giving Tree has been making that moment possible for Bay Area kids — and your gift keeps it going.</p>
+    </div>
+ 
     <div class="stats-row">
       <div class="stat">
         <div class="stat-number">500,000+</div>
@@ -254,20 +181,19 @@
         <div class="stat-label">Partner schools<br>across the Bay Area</div>
       </div>
     </div>
-
+ 
     <div class="quote-block">
       <p class="quote-text">The smile on the faces of the family and the relief you see in them, knowing they don't have to spend the money that they have assigned for food. This always makes my heart jump with happiness.</p>
       <p class="quote-attribution">— A Bay Area Educator</p>
     </div>
+ 
   </div>
-
+ 
 </section>
-
+ 
 <script>
-  const searchWrapper = document.querySelector('.search-wrapper');
-  const searchIframe  = document.querySelector('.search-wrapper iframe');
   let lastReportedHeight = 0;
-
+ 
   function reportHeight() {
     const height = document.body.scrollHeight;
     if (height !== lastReportedHeight) {
@@ -275,26 +201,11 @@
       window.parent.postMessage({ height: height }, '*');
     }
   }
-
-  window.addEventListener('message', function(e) {
-    if (e.origin !== 'https://briannafgt.github.io') return;
-    if (e.data && e.data.height) {
-      const newHeight = e.data.height;
-      if (newHeight <= 100) {
-        searchWrapper.classList.remove('expanded');
-        searchIframe.style.height = newHeight + 'px';
-      } else {
-        searchWrapper.style.setProperty('--iframe-height', newHeight + 'px');
-        searchWrapper.classList.add('expanded');
-        searchIframe.style.height = newHeight + 'px';
-      }
-      setTimeout(reportHeight, 600);
-    }
-  });
-
+ 
   window.addEventListener('load', reportHeight);
   document.fonts.ready.then(reportHeight);
 </script>
-
+ 
 </body>
 </html>
+ 
